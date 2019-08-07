@@ -4,6 +4,17 @@ import java.util.StringTokenizer;
  
 public class Solution {
 	static int n, q[], head, tail, tmp, cycle;
+
+	static void add(int val) {
+		q[tail++] = val;
+		if(tail == n) tail %= n;
+	}
+	
+	static int pop() {
+		int res = q[head++];
+		if(head == n) head %= n;
+		return res;
+	}
 	
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -35,15 +46,4 @@ public class Solution {
         }
 	    System.out.print(sb);
     }
-
-	static void add(int val) {
-		q[tail++] = val;
-		if(tail == n) tail %= n;
-	}
-	
-	static int pop() {
-		int res = q[head++];
-		if(head == n) head %= n;
-		return res;
-	}
 }
