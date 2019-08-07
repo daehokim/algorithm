@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
  
 public class Solution {
-	static int n, x, m, cage[], count[][], tmp, ans[], sum;
+	static int n, x, m, cage[], count[][], tmp, ans[], sum, start, end;
 	
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,24 +17,31 @@ public class Solution {
         	m = Integer.parseInt(st.nextToken());
         	cage = new int[n];
         	count = new int[m][3];
+        	start = n;
+        	end = 0;
         	for(int i = 0; i < m; ++i) {
         		st = new StringTokenizer(br.readLine());
         		count[i][0] = Integer.parseInt(st.nextToken())-1;
         		count[i][1] = Integer.parseInt(st.nextToken())-1;
         		count[i][2] = Integer.parseInt(st.nextToken());
+        		if(start > count[i][0]) start = count[i][0];
+        		if(end < count[i][1]+1) end = count[i][1]+1;
         	}
         	
         	ans = new int[n];
         	sum = -1;
-        	permu(0, 0);
+        	permu(start, 0);
         	
         	sb.append("#"+tc);
         	if(sum < 0) {
         		sb.append(" -1");
         	} else {
-        		for(int i = 0; i < n; ++i) {
+        		for(int i = 0; i < start; ++i)
+        			sb.append(" "+x);
+        		for(int i = start; i < end; ++i) 
         			sb.append(" "+ans[i]);
-        		}
+        		for(int i = end; i < n; ++i)
+        			sb.append(" "+x);
         	}
         	sb.append("\n");
         }
@@ -42,7 +49,7 @@ public class Solution {
     }
 
 	private static void permu(int now, int total) {
-		if(now == n) {
+		if(now == end) {
 			if(total > sum) {
 				for(int i = 0; i < m; ++i) {
 					tmp = 0;
@@ -51,7 +58,7 @@ public class Solution {
 					}
 					if(tmp != count[i][2]) return;
 				}
-				for(int j = 0; j < n; ++j) 
+				for(int j = start; j < end; ++j) 
 					ans[j] = cage[j];
 				sum = total;
 			}
