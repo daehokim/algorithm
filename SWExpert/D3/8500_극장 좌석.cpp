@@ -1,11 +1,12 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-	int T = 0, n = 0, ans = 0, max = 0;
-	int* A = NULL;
+int T = 0, n = 0, ans = 0, max = 0;
+int* A = NULL;
 
+int main() {
 	cin >> T;
+
 	for(int tc = 1; tc <= T; ++tc) {
 		cin >> n;
 		A = new int[n];
@@ -20,5 +21,6 @@ int main() {
 		}
 		cout << "#" << tc << " " << ans+max << endl;
 	}
+
 	return 0;
 }
