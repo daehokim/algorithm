@@ -20,6 +20,7 @@ int main() {
 			}
 		}
 		cout << "#" << tc << " " << ans+max << endl;
+		delete[] A;
 	}
 
 	return 0;
