@@ -1,26 +1,24 @@
 #include <iostream>
 using namespace std;
 
-int T = 0, n = 0, ans = 0, max = 0;
-int* A = NULL;
+int T = 0, n = 0, ans = 0;
 
 int main() {
 	cin >> T;
 
 	for(int tc = 1; tc <= T; ++tc) {
 		cin >> n;
-		A = new int[n];
+		int A = 0;
 		ans = n;
-		max = 0;
+		int max = 0;
 		for(int i = 0; i < n; ++i) {
-			cin >> A[i];
-			ans += A[i];
-			if(A[i] > max) {
-				max = A[i];
+			cin >> A;
+			ans += A;
+			if(A > max) {
+				max = A;
 			}
 		}
-		cout << "#" << tc << " " << ans+max << endl;
-		delete[] A;
+		printf("#%d %d\n", tc, ans+max);
 	}
 
 	return 0;
