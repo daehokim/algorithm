@@ -7,11 +7,7 @@ int dp[101][100001];
 
 int Max(int _a, int _b)
 {
-	if (_a > _b)
-	{
-		return _a;
-	}
-	return _b;
+	return _a > _b ? _a : _b;
 }
 
 int main()
